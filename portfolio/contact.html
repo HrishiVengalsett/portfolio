@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container text-center mt-4">
+    <a href="index.html">
+      <img src="logo.jpg" alt="Logo" class="img-fluid" height="100" width="150">
+    </a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <h1 class="mt-4">Contact</h1>
+    <h3 class="text-center">Fill the form below to contact me!</h3>
+
+    <form class="box mt-4" id="contactForm" onsubmit="return validateForm()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" >
+        <div class="text-danger" id="nameError"></div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        <div class="text-danger" id="emailError"></div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="contact" class="form-label">Contact Number:</label>
+        <input type="number" class="form-control" id="contact" placeholder="Enter your number">
+        <div class="text-danger" id="contactError"></div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="concern" class="form-label">Your Concerns:</label>
+        <input type="text" class="form-control" id="concern" placeholder="Enter your concerns">
+        <div class="text-danger" id="concernError"></div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <p class="mt-4">
+      Email: <a href="mailto:hrishi_vengalsetti@srmap.edu.in">hrishi_vengalsetti@srmap.edu.in</a><br/>
+      LinkedIn: <a href="https://www.linkedin.com/in/hrishi-vengalsetti-77530b338/" target="_blank">hrishi-vengalsetti</a>
+    </p>
+  </div>
+
+  <script>
+    function validateForm() {
+      let isValid = true;
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let contact = document.getElementById("contact").value;
+      let concern = document.getElementById("concern").value;
+      
+      let nameRegex = /^[A-Za-z\s]{3,}$/;
+      if (!nameRegex.test(name)) {
+        document.getElementById("nameError").innerText = "Invalid Name (Min 3 letters)";
+        isValid = false;
+      } else {
+        document.getElementById("nameError").innerText = "";
+      }
+      
+      let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById("emailError").innerText = "Invalid Email";
+        isValid = false;
+      } else {
+        document.getElementById("emailError").innerText = "";
+      }
+      
+      if (contact.length < 10 || contact.length > 15) {
+        document.getElementById("contactError").innerText = "Invalid Contact Number";
+        isValid = false;
+      } else {
+        document.getElementById("contactError").innerText = "";
+      }
+      
+      if (concern.trim() === "") {
+        document.getElementById("concernError").innerText = "Please enter your concerns";
+        isValid = false;
+      } else {
+        document.getElementById("concernError").innerText = "";
+      }
+      
+      return isValid;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
